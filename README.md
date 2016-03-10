@@ -31,3 +31,15 @@ this will download all npm and bower required packages
 
 ```
 
+
+### Tests
+```
+$ npm test
+```
+
+### Version
+1.0 
+
+## License
+
+MIT 
