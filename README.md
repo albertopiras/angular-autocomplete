@@ -43,3 +43,6 @@ $ npm test
 ## License
 
 MIT 
+
+
+[view demo]: <http://angularautocomplete-enta.rhcloud.com/app/>
