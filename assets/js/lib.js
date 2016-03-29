@@ -1,12 +1,14 @@
- var app = angular.module('autocompleteApp', ['']);
+var app = angular.module('autocompleteapp',['ngRoute']);
 
+app.config(function ($httpProvider) {
+  delete $httpProvider.defaults.headers.common['X-Requested-With'];
+});
 
- app.controller('autocomplete', ['$scope', function('$scope'){
+app.controller('autocomplete', function ($scope, $rootScope, $compile, $timeout) {
 
-
-     $scope.services= [{id:"first",value="primo elemento"},
-     {id:"second",value="secondo elemento"},
-     {id:"third",value="terzo elemento"}];
+     $scope.services= [{"id":"first","value":"primo elemento"},
+     {"id":"second","value":"secondo elemento"},
+     {"id":"third","value":"terzo elemento"}];
 
      /***AUTOCOMPLETER***/
      /*Autocompleter start*/
@@ -73,7 +75,7 @@
         var oBoxCollection = $(".display_box");
         var cssClass = "display_box_hover";
         var temp = oBoxCollection.removeClass(cssClass).eq(displayBoxIndex).click();
-        
+
     };
 
     /*Autocompleter End*/
@@ -84,5 +86,6 @@
         return response;
     };
 
-}]);
+
+});
 

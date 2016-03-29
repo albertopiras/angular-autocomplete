@@ -1,0 +1,17 @@
+
+.autocompleteItem{
+    padding: 0.7em 0.5em 0.5em 0.5em;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    margin-bottom: 0.5em;
+}
+
+
+.autocomplete_input, autocomplete_select{
+    width: 100%;
+}
+.display_box_hover, .display_box:hover
+{
+    background:#3b5998;
+    color:#FFFFFF;
+}
