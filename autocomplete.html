@@ -1,0 +1,12 @@
+<h2>Autocomplete</h2>
+<div class="width-33">
+		<div class="aj_autocomplete form-group label-floating">
+			<label for="searchService" class="control-label title-input">Aggiungi Servizio</label>
+			<input type="text" id="searchService" ng-click="showDrop" name="searchService" ng-model="searchService" class="autocomplete_input form-control" maxlength="50"/>
+			<div class="autocomplete_select hideElement"> 
+				<div class="autocompleteItem display_box" ng-repeat="item in services | filter :searchService" ng-click="addSelectItem(item.id)"> 
+					{{item.value}}-{{item.id}}
+				</div>
+			</div>
+		</div>
+	</div>
