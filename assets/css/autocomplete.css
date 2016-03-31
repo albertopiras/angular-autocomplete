@@ -19,3 +19,8 @@
     background:#3b5998;
     color:#FFFFFF;
 }
+
+
+.hideElement{
+	display: none;
+}
