@@ -1,10 +1,13 @@
-var app = angular.module('autocompleteapp',['ngRoute']);
+var app = angular.module('autocomplete',['ngRoute']);
+
+
+
 
 app.config(function ($httpProvider) {
   delete $httpProvider.defaults.headers.common['X-Requested-With'];
 });
 
-app.controller('autocomplete', function ($scope, $rootScope, $compile, $timeout) {
+app.controller('autocompleteController', function ($scope, $rootScope, $compile, $timeout) {
 
      $scope.services= [{"id":"first","value":"primo elemento"},
      {"id":"second","value":"secondo elemento"},

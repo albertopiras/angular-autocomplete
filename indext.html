@@ -5,19 +5,18 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Angular autocomplete</title>
-<script type="text/javascript" src="assets/js/jquery-1.12.1.min.js"></script>
+	<script type="text/javascript" src="assets/js/jquery-1.12.1.min.js"></script>
 	<script type="text/javascript" src="assets/js/angular.min.js"></script>
 	<script type="text/javascript" src="assets/js/angular-route.min.js"></script>
-<script type="text/javascript" src="assets/js/underscore.js"></script>
+	<script type="text/javascript" src="assets/js/underscore.js"></script>
 	<script type="text/javascript" src="assets/js/lib.js"></script>
 
-<link rel="stylesheet" type="text/css" href="assets/css/autocomplete.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/autocomplete.css">
 </head>
 
-
-<body ng-app="autocompleteapp">
+<body ng-app="autocomplete">
 	<h1>Angular Autocomplete</h1>
-	<div class="col-md-4 " ng-controller="autocomplete">
+	<div class="width-33" ng-controller="autocompleteController">
 		<div class="aj_autocomplete form-group label-floating">
 			<label for="searchService" class="control-label title-input">Aggiungi Servizio</label>
 			<input type="text" id="searchService" ng-click="showDrop" name="searchService" ng-model="searchService" class="autocomplete_input form-control" maxlength="50"/>
