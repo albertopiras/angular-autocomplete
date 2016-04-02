@@ -78,7 +78,7 @@ angular.module('autocompleteComponent',[])
                 /*timeout used to allow Angular digest cycle close itself */
                 setTimeout(function(){
                     //console.debug($scope.displayBoxIndex);
-                    console.warn("trying to select item");
+                    //console.debug("selecting item");
                     var oBoxCollection = angular.element($scope.componentAutocomplete).find(".display_box");
                     var cssClass = "display_box_hover";
                     var temp = oBoxCollection.removeClass(cssClass).eq($scope.displayBoxIndex).click();
@@ -96,10 +96,3 @@ angular.module('autocompleteComponent',[])
         templateUrl : 'autocomplete.html'
     }
 });
-
-var app = angular.module('autocomplete',['ngRoute','autocompleteComponent']);
-
-app.config(function ($httpProvider) {
-  delete $httpProvider.defaults.headers.common['X-Requested-With'];
-});
-
