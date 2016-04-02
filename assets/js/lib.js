@@ -44,64 +44,60 @@ angular.module('autocompleteComponent',[])
             angular.element('body').click(function() {
                angular.element($scope.componentAutocomplete).find(".autocomplete_select").addClass("hideElement");
                $scope.cleanAddService();
-           });
+            });
 
- // $("#searchService").keyup(function(e) 
- $scope.navigate =function(e){
-    //console.debug("navigating..");
-    if (e.keyCode == 40) 
-    {  
-        Navigate(1);
+            // $("#searchService").keyup(function(e) 
+            $scope.navigate =function(e){
+                //console.debug("navigating..");
+                if (e.keyCode == 40) 
+                {  
+                    Navigate(1);
+                }
+                if(e.keyCode==38)
+                {
+                    Navigate(-1);
+                }
+                if(e.keyCode==13)
+                {
+                    selectListItem(e);
+                }
+            };
+
+            var Navigate = function(diff) {
+                $scope.displayBoxIndex += diff;
+                var oBoxCollection = angular.element($scope.componentAutocomplete).find(".display_box");
+                if ($scope.displayBoxIndex >= oBoxCollection.length)
+                    $scope.displayBoxIndex = 0;
+                if ($scope.displayBoxIndex < 0)
+                    $scope.displayBoxIndex = oBoxCollection.length - 1;
+                var cssClass = "display_box_hover";
+                oBoxCollection.removeClass(cssClass).eq($scope.displayBoxIndex).addClass(cssClass);
+            };
+
+            var selectListItem = function() {
+                /*timeout used to allow Angular digest cycle close itself */
+                setTimeout(function(){
+                    //console.debug($scope.displayBoxIndex);
+                    console.warn("trying to select item");
+                    var oBoxCollection = angular.element($scope.componentAutocomplete).find(".display_box");
+                    var cssClass = "display_box_hover";
+                    var temp = oBoxCollection.removeClass(cssClass).eq($scope.displayBoxIndex).click();
+                },150); 
+            };
+
+            /*Autocompleter End*/
+
+            $scope.getServiceName = function(serviceId){
+                var service = _.find($scope.services, function(service){ return service.id === serviceId;});
+                var response = (service !== undefined)? service.id: serviceId;
+                return response;
+            };
+        },  
+        templateUrl : 'autocomplete.html'
     }
-    if(e.keyCode==38)
-    {
-        Navigate(-1);
-    }
-    if(e.keyCode==13)
-    {
-        selectListItem(e);
-    }
-};
-
-var Navigate = function(diff) {
-    $scope.displayBoxIndex += diff;
-    var oBoxCollection = angular.element($scope.componentAutocomplete).find(".display_box");
-    if ($scope.displayBoxIndex >= oBoxCollection.length)
-        $scope.displayBoxIndex = 0;
-    if ($scope.displayBoxIndex < 0)
-        $scope.displayBoxIndex = oBoxCollection.length - 1;
-    var cssClass = "display_box_hover";
-    oBoxCollection.removeClass(cssClass).eq($scope.displayBoxIndex).addClass(cssClass);
-};
-
-var selectListItem = function() {
-    /*timeout used to allow Angular digest cycle close itself */
-   setTimeout(function(){
-    //console.debug($scope.displayBoxIndex);
-    console.warn("trying to select item");
-    var oBoxCollection = angular.element($scope.componentAutocomplete).find(".display_box");
-    var cssClass = "display_box_hover";
-    var temp = oBoxCollection.removeClass(cssClass).eq($scope.displayBoxIndex).click();
-},150); 
-
-};
-
-/*Autocompleter End*/
-
-$scope.getServiceName = function(serviceId){
-    var service = _.find($scope.services, function(service){ return service.id === serviceId;});
-    var response = (service !== undefined)? service.id: serviceId;
-    return response;
-};
-},  
-templateUrl : 'autocomplete.html'
-
-}
 });
 
-
 var app = angular.module('autocomplete',['ngRoute','autocompleteComponent']);
-
 
 app.config(function ($httpProvider) {
   delete $httpProvider.defaults.headers.common['X-Requested-With'];
