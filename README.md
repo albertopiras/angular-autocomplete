@@ -1,9 +1,8 @@
 # Angular Autocomplete
 
-A simple AngularJS module that allows you to create fast autocomplete
+A simple AngularJS module that allows you to create fast and very simple autocomplete Components to use in your application.
 
 ## Angular-Autocomplete
-
 
 [view demo]
 
