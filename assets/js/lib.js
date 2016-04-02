@@ -5,13 +5,14 @@ angular.module('autocompleteComponent',[])
         scope : {
             services: '=',
         },
-        link: function($scope,element){
+        link: function($scope, element){
             // selects current 'directive Element to ensure a custom search scope'
             $scope.componentAutocomplete = element[0];
             console.log($scope.componentAutocomplete);
         },
-        controller: function($scope,$timeout){
+        controller: function($scope,$rootScope,$timeout){
 
+            $scope.displayBoxIndex = -1;
             /***AUTOCOMPLETER***/
             /*Autocompleter start*/
             $scope.cleanAddService = function(){
@@ -34,8 +35,8 @@ angular.module('autocompleteComponent',[])
             $scope.$watch('searchService', function(newValue, oldValue, scope) {
                 if(newValue !== oldValue){
                     $scope.cleanAddService();
-                    // console.log("watch " );
-                    // console.log($scope.componentAutocomplete);
+                    //console.debug("watch: changing input" );
+                    // console.info($scope.componentAutocomplete);
                     angular.element($scope.componentAutocomplete).find(".autocomplete_select").removeClass("hideElement");
                 }
             });
@@ -45,72 +46,57 @@ angular.module('autocompleteComponent',[])
                $scope.cleanAddService();
            });
 
-            window.displayBoxIndex = -1;
-
  // $("#searchService").keyup(function(e) 
-        $scope.navigate =function(e){
-        console.log("naviga..");
-          if (e.keyCode == 40) 
-            {  
-                Navigate(1);
-            }
-            if(e.keyCode==38)
-            {
-                Navigate(-1);
-            }
-            if(e.keyCode==13)
-            {
-                selectListItem();
-            }
-        }
-            $($scope.componentAutocomplete).find("#searchService").keyup(function(e) 
-            {
-
-                if (e.keyCode == 40) 
-                {  
-                    console.info("aaa");
-                    Navigate(1);
-                }
-                if(e.keyCode==38)
-                {
-                    console.info("aaa");
-                    Navigate(-1);
-                }
-                if(e.keyCode==13)
-                {
-                    selectListItem();
-                }
-            });
-
-            var Navigate = function(diff) {
-                displayBoxIndex += diff;
-                var oBoxCollection = angular.element($scope.componentAutocomplete).find(".display_box");
-                if (displayBoxIndex >= oBoxCollection.length)
-                    displayBoxIndex = 0;
-                if (displayBoxIndex < 0)
-                    displayBoxIndex = oBoxCollection.length - 1;
-                var cssClass = "display_box_hover";
-                oBoxCollection.removeClass(cssClass).eq(displayBoxIndex).addClass(cssClass);
-            };
-
-            var selectListItem = function(diff) {
-                var oBoxCollection = angular.element($scope.componentAutocomplete).find(".display_box");
-                var cssClass = "display_box_hover";
-                var temp = oBoxCollection.removeClass(cssClass).eq(displayBoxIndex).click();
-
-            };
-
-            /*Autocompleter End*/
-
-            $scope.getServiceName = function(serviceId){
-                var service = _.find($scope.services, function(service){ return service.id === serviceId;});
-                var response = (service !== undefined)? service.id: serviceId;
-                return response;
-            };
-        },  
-    templateUrl : 'autocomplete.html'
-
+ $scope.navigate =function(e){
+    //console.debug("navigating..");
+    if (e.keyCode == 40) 
+    {  
+        Navigate(1);
     }
+    if(e.keyCode==38)
+    {
+        Navigate(-1);
+    }
+    if(e.keyCode==13)
+    {
+        selectListItem(e);
+    }
+};
+
+var Navigate = function(diff) {
+    $scope.displayBoxIndex += diff;
+    var oBoxCollection = angular.element($scope.componentAutocomplete).find(".display_box");
+    if ($scope.displayBoxIndex >= oBoxCollection.length)
+        $scope.displayBoxIndex = 0;
+    if ($scope.displayBoxIndex < 0)
+        $scope.displayBoxIndex = oBoxCollection.length - 1;
+    var cssClass = "display_box_hover";
+    oBoxCollection.removeClass(cssClass).eq($scope.displayBoxIndex).addClass(cssClass);
+};
+
+var selectListItem = function() {
+    /*timeout used to allow Angular digest cycle close itself */
+   setTimeout(function(){
+    //console.debug($scope.displayBoxIndex);
+    console.warn("trying to select item");
+    var oBoxCollection = angular.element($scope.componentAutocomplete).find(".display_box");
+    var cssClass = "display_box_hover";
+    var temp = oBoxCollection.removeClass(cssClass).eq($scope.displayBoxIndex).click();
+},150); 
+
+};
+
+/*Autocompleter End*/
+
+$scope.getServiceName = function(serviceId){
+    var service = _.find($scope.services, function(service){ return service.id === serviceId;});
+    var response = (service !== undefined)? service.id: serviceId;
+    return response;
+};
+},  
+templateUrl : 'autocomplete.html'
+
+}
 });
 
 
