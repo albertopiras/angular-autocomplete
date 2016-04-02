@@ -1,23 +1,20 @@
-
-
 angular.module('autocompleteComponent',[])
 .directive('autocomplete',function(){
-    var componentAutocomplete;
     return{
         restrict : 'E',
-        scope:{
-         services: '='
-     },
-     link: function(scope,element){
-                // selects current 'directive Element to ensure a custom search scope'
-                componentAutocomplete = element[0];
-                console.log(componentAutocomplete);
-            },
-            controller: function($scope,$timeout){
-               /***AUTOCOMPLETER***/
-               /*Autocompleter start*/
+        scope : {
+            services: '=',
+        },
+        link: function($scope,element){
+            // selects current 'directive Element to ensure a custom search scope'
+            $scope.componentAutocomplete = element[0];
+            console.log($scope.componentAutocomplete);
+        },
+        controller: function($scope,$timeout){
 
-               $scope.cleanAddService = function(){
+            /***AUTOCOMPLETER***/
+            /*Autocompleter start*/
+            $scope.cleanAddService = function(){
                 $scope.enableAddService = false;
                 $scope.serviceSelected = "";
             };
@@ -29,7 +26,7 @@ angular.module('autocompleteComponent',[])
                 $scope.searchService =  $scope.getServiceName(serviceId);
                 $timeout(function(){
                     $scope.serviceSelected=serviceId;
-                    angular.element(componentAutocomplete).find(".autocomplete_select").addClass("hideElement");
+                    angular.element($scope.componentAutocomplete).find(".autocomplete_select").addClass("hideElement");
                     $scope.enableAddService = true;
                 },100);
             };
@@ -37,26 +34,46 @@ angular.module('autocompleteComponent',[])
             $scope.$watch('searchService', function(newValue, oldValue, scope) {
                 if(newValue !== oldValue){
                     $scope.cleanAddService();
-                    console.log("watch");
-                    angular.element(componentAutocomplete).find(".autocomplete_select").removeClass("hideElement");
+                    // console.log("watch " );
+                    // console.log($scope.componentAutocomplete);
+                    angular.element($scope.componentAutocomplete).find(".autocomplete_select").removeClass("hideElement");
                 }
             });
 
             angular.element('body').click(function() {
-                 angular.element(componentAutocomplete).find(".autocomplete_select").addClass("hideElement");
-                $scope.cleanAddService();
-            });
+               angular.element($scope.componentAutocomplete).find(".autocomplete_select").addClass("hideElement");
+               $scope.cleanAddService();
+           });
 
             window.displayBoxIndex = -1;
 
-            angular.element(componentAutocomplete).find("#searchService").keyup(function(e) 
+ // $("#searchService").keyup(function(e) 
+        $scope.navigate =function(e){
+        console.log("naviga..");
+          if (e.keyCode == 40) 
+            {  
+                Navigate(1);
+            }
+            if(e.keyCode==38)
             {
+                Navigate(-1);
+            }
+            if(e.keyCode==13)
+            {
+                selectListItem();
+            }
+        }
+            $($scope.componentAutocomplete).find("#searchService").keyup(function(e) 
+            {
+
                 if (e.keyCode == 40) 
                 {  
+                    console.info("aaa");
                     Navigate(1);
                 }
                 if(e.keyCode==38)
                 {
+                    console.info("aaa");
                     Navigate(-1);
                 }
                 if(e.keyCode==13)
@@ -67,7 +84,7 @@ angular.module('autocompleteComponent',[])
 
             var Navigate = function(diff) {
                 displayBoxIndex += diff;
-                var oBoxCollection = angular.element(componentAutocomplete).find(".display_box");
+                var oBoxCollection = angular.element($scope.componentAutocomplete).find(".display_box");
                 if (displayBoxIndex >= oBoxCollection.length)
                     displayBoxIndex = 0;
                 if (displayBoxIndex < 0)
@@ -77,7 +94,7 @@ angular.module('autocompleteComponent',[])
             };
 
             var selectListItem = function(diff) {
-                var oBoxCollection = angular.element(componentAutocomplete).find(".display_box");
+                var oBoxCollection = angular.element($scope.componentAutocomplete).find(".display_box");
                 var cssClass = "display_box_hover";
                 var temp = oBoxCollection.removeClass(cssClass).eq(displayBoxIndex).click();
 
@@ -91,7 +108,7 @@ angular.module('autocompleteComponent',[])
                 return response;
             };
         },  
-        templateUrl : 'autocomplete.html'
+    templateUrl : 'autocomplete.html'
 
     }
 });
@@ -102,11 +119,5 @@ var app = angular.module('autocomplete',['ngRoute','autocompleteComponent']);
 
 app.config(function ($httpProvider) {
   delete $httpProvider.defaults.headers.common['X-Requested-With'];
-});
-
-app.controller('autocompleteController', function ($scope, $timeout) {
-
-
-
 });
 
