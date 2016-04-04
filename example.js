@@ -6,7 +6,7 @@ app.controller("exampleController",["$scope", "$http" ,function($scope, $http){
 
 	$scope.myfunction = function(param){
 		alert("JSON object: "+ JSON.stringify(param));
-		console.info("You selected " + param);
+		console.info("You selected " + JSON.stringify(param));
     }
 
     // Reads JSON file
