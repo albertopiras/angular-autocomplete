@@ -6,24 +6,39 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Angular autocomplete</title>
 
-	<!-- JS inclusions -->
-	<script type="text/javascript" src="assets/lib/jquery-1.12.1.min.js"></script>
-	<script type="text/javascript" src="assets/lib/angular.min.js"></script>
-	<script type="text/javascript" src="assets/lib/underscore.js"></script>
-	<script type="text/javascript" src="assets/js/angular_autocomplete.js"></script>
-	<script type="text/javascript" src="app.js"></script>
+	<!-- JS Libs inclusions -->
+	<script type="text/javascript" src="assets/libs/jquery-1.12.1.min.js"></script>
+	<script type="text/javascript" src="assets/libs/angular.min.js"></script>
+	<script type="text/javascript" src="assets/libs/underscore.js"></script>
 
+	<!-- AUTOCOMPLETE JS -->
+	<script type="text/javascript" src="assets/js/angular_autocomplete.js"></script>
 	<!-- CSS -->
 	<link rel="stylesheet" type="text/css" href="assets/css/autocomplete.css">
+
+	<!-- element app -->
+	<script type="text/javascript" src="example.js"></script>
+
+<style type="text/css">
+	.element{
+		margin: 1rem 0;
+	}
+</style>
 </head>
 
-<body ng-app="autocomplete">
+<body ng-app="autocompleteExample">
 	<h1>Angular Autocomplete</h1>
 	<div ng-controller="exampleController">
-
-	<autocomplete services='UScountries' callback="test(param)"></autocomplete>
-	<autocomplete services='UScountries'callback="test(param)" ></autocomplete>
-
+		<div class="width-33">
+			<div class="element">
+				<label for="autocomplete1">Autocomplete 1</label>
+				<autocomplete id="autocomplete1" services='UScountries' callback="myfunction(param)"></autocomplete>
+			</div>
+			<div class="element">
+				<label for="autocomplete2">Autocomplete 2</label>
+				<autocomplete id="autocomplete2" services='UScountries'callback="myfunction(param)" ></autocomplete>
+			</div>
+		</div>
 	</div>
 </body>
 </html>

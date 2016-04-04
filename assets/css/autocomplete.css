@@ -3,7 +3,7 @@
 }
 
 
-.autocompleteItem{
+.autocomplete-item{
     padding: 0.7em 0.5em 0.5em 0.5em;
     border-bottom: 1px solid #eee;
     cursor: pointer;
@@ -11,7 +11,7 @@
 }
 
 
-.autocomplete_input, autocomplete_select{
+.autocomplete-input, .autocomplete-list{
     width: 100%;
 }
 .display_box_hover, .display_box:hover

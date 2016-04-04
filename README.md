@@ -13,9 +13,7 @@ A simple AngularJS module that allows you to create fast and very simple autocom
 $ git clone https://github.com/Alberto-/angular-autocomplete.git
 ```
 
-From project root `(
-Prerequisites: node
-)`
+
 
 
 ```

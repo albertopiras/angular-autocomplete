@@ -28,7 +28,7 @@ angular.module('autocompleteComponent',[])
                 $scope.searchService =  $scope.getServiceName(object.id);
                 $timeout(function(){
                     $scope.serviceSelected=object.id;
-                    angular.element($scope.componentAutocomplete).find(".autocomplete_select").addClass("hideElement");
+                    angular.element($scope.componentAutocomplete).find(".autocomplete-list").addClass("hideElement");
                     $scope.enableAddService = true;
 
                     /*callback call*/
@@ -42,12 +42,12 @@ angular.module('autocompleteComponent',[])
                     $scope.cleanAddService();
                     //console.debug("watch: changing input" );
                     // console.info($scope.componentAutocomplete);
-                    angular.element($scope.componentAutocomplete).find(".autocomplete_select").removeClass("hideElement");
+                    angular.element($scope.componentAutocomplete).find(".autocomplete-list").removeClass("hideElement");
                 }
             });
 
             angular.element('body').click(function() {
-             angular.element($scope.componentAutocomplete).find(".autocomplete_select").addClass("hideElement");
+             angular.element($scope.componentAutocomplete).find(".autocomplete-list").addClass("hideElement");
              $scope.cleanAddService();
          });
 
@@ -98,6 +98,6 @@ angular.module('autocompleteComponent',[])
                 return response;
             };
         },  
-        templateUrl : 'autocomplete.html'
+        template : '<input type="text" ng-keyup="navigate($event)" id="searchService" name="searchService" ng-model="searchService" class="autocomplete-input" maxlength="50"/><div class="autocomplete-list hideElement"><div class="autocomplete-item display_box" ng-repeat="item in services | filter : searchService" ng-click="addSelectItem(item)">{{item.value}}-{{item.id}}</div></div>'
     }
 });
