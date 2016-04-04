@@ -2,23 +2,22 @@
 
 A simple AngularJS module that allows you to create fast and very simple autocomplete Components to use in your application.
 
+## Required libraries
+
+* jquery 
+* angular 1.x
+* underscore
 
 ## Installation
+
+Clone the repository
 
 ```
 $ git clone https://github.com/Alberto-/angular-autocomplete.git
 ```
+##### Include files in your app
 
-###Required libraries:
-
-jquery 
-
-angular 1.x
-
-underscore
-
-
-Include both angular_autocomplete.js and angular_autocomplete.css files.
+Include both `angular_autocomplete.js` and `angular_autocomplete.css` files.
 
 then inject the "autocompleteComponent" in your app
 
