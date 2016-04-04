@@ -30,6 +30,8 @@ angular.module('autocompleteComponent',[])
                     $scope.serviceSelected=object.id;
                     angular.element($scope.componentAutocomplete).find(".autocomplete_select").addClass("hideElement");
                     $scope.enableAddService = true;
+
+                    /*callback call*/
                     $scope.callback({param: object});
          
                 },100);
