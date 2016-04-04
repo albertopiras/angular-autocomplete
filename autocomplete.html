@@ -4,7 +4,7 @@
 		<label for="searchService" class="control-label title-input">Aggiungi Servizio</label>
 		<input type="text" ng-keyup="navigate($event)" id="searchService" ng-click="showDrop" name="searchService" ng-model="searchService" class="autocomplete_input form-control" maxlength="50"/>
 		<div class="autocomplete_select hideElement"> 
-			<div class="autocompleteItem display_box" ng-repeat="item in services | filter :searchService" ng-click="addSelectItem(item.id)">{{item.value}}-{{item.id}}
+			<div class="autocompleteItem display_box" ng-repeat="item in services | filter : searchService" ng-click="addSelectItem(item)">{{item.value}}-{{item.id}}
 			</div>
 		</div>
 	</div>
