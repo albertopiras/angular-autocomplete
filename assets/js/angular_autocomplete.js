@@ -14,8 +14,6 @@ angular.module('autocompleteComponent',[])
         controller: function($scope,$rootScope,$timeout){
 
             $scope.displayBoxIndex = -1;
-            /***AUTOCOMPLETER***/
-            /*Autocompleter start*/
 
             $scope.addSelectItem = function(object){
                 $scope.searchElement =  $scope.getServiceName(object.id);
@@ -29,7 +27,6 @@ angular.module('autocompleteComponent',[])
             $scope.$watch('searchElement', function(newValue, oldValue, scope) {
                 if(newValue !== oldValue){
                     //console.debug("watch: changing input" );
-                    // console.info($scope.componentAutocomplete);
                     angular.element($scope.componentAutocomplete).find(".autocomplete-list").removeClass("hideElement");
                 }
             });
@@ -69,15 +66,12 @@ angular.module('autocompleteComponent',[])
             var selectListItem = function() {
                 /*timeout used to allow Angular digest cycle close itself */
                 setTimeout(function(){
-                    //console.debug($scope.displayBoxIndex);
                     //console.debug("selecting item");
                     var oBoxCollection = angular.element($scope.componentAutocomplete).find(".display_box");
                     var cssClass = "display_box_hover";
                     var temp = oBoxCollection.removeClass(cssClass).eq($scope.displayBoxIndex).click();
                 },150); 
             };
-
-            /*Autocompleter End*/
 
             $scope.getServiceName = function(objId){
                 var obj = _.find($scope.autocompletelist, function(obj){ return obj.id === objId;});
