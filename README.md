@@ -32,7 +32,7 @@ The autocomplete directive accepts two special attributes,
 `autocompletelist` and `callback`:
 - **autocompletelist** must contain a JSON array with your own elements list. Every JSON object must have an "id" and a "value" properties, like: {"id": "itemID", "value" : "item description"}
 
-- **callback** will contain the function you want call when you select an element in the list.
+- **callback** will contain a custom function you want call when you select an element in the list.
 
 
 so here an example of your JS file:
@@ -62,13 +62,13 @@ myApp.controller("exampleController",["$scope" ,function($scope){
 
 ```
 
-here the corresponding HTML code:
+Here the corresponding HTML code:
 
 ```
 <autocomplete autocompletelist='UScountries' callback="mycallback(param)"></autocomplete>
 ```
 
-you can find the real example within the indext.html file.
+You can find the real example within the indext.html file.
 
 
 ### Run
@@ -95,7 +95,7 @@ http://localhost:8000/indext.html
 
 ## ONLINE DEMO
 
-Coming soon
+Coming soon ..
 
 
 ### Version
@@ -105,4 +105,4 @@ Coming soon
 
 MIT 
 
-[view demo]: <http://angularautocomplete-enta.rhcloud.com/app/>
+[view demo]: <http://ADDRESS/autocomplete/>
