@@ -1,7 +1,6 @@
-.width-33{
-	width: 33%;
+.hideElement{
+	display: none;
 }
-
 
 .autocomplete-item{
     padding: 0.7em 0.5em 0.5em 0.5em;
@@ -10,17 +9,11 @@
     margin-bottom: 0.5em;
 }
 
-
 .autocomplete-input, .autocomplete-list{
     width: 100%;
 }
-.display_box_hover, .display_box:hover
-{
+
+.display_box_hover, .display_box:hover{
     background:#3b5998;
     color:#FFFFFF;
-}
-
-
-.hideElement{
-	display: none;
 }
