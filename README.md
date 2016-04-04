@@ -70,6 +70,8 @@ Here the corresponding HTML code:
 
 This is a very simple autocomplete, in 3 or 4 steps you have a simple autocomplete working!
 
+It's so easy as Renato Pozzetto does the dishes (in "Le Comiche" film).
+
 ![Alt text](https://github.com/Alberto-/angular-autocomplete/blob/master/assets/img/Pozzetto.gif?raw=true "One two three four...TAAC  (Pozzetto - Le comiche)")
 
 
