@@ -16,30 +16,18 @@ angular.module('autocompleteComponent',[])
             $scope.displayBoxIndex = -1;
             /***AUTOCOMPLETER***/
             /*Autocompleter start*/
-            $scope.cleanAddService = function(){
-                $scope.enableAddService = false;
-                $scope.autocompletelistelected = "";
-            };
-
-            $scope.enableAddService = false;
-            $scope.autocompletelistelected;
 
             $scope.addSelectItem = function(object){
                 $scope.searchElement =  $scope.getServiceName(object.id);
                 $timeout(function(){
-                    $scope.autocompletelistelected=object.id;
                     angular.element($scope.componentAutocomplete).find(".autocomplete-list").addClass("hideElement");
-                    $scope.enableAddService = true;
-
                     /*callback call*/
                     $scope.callback({param: object});
-         
                 },100);
             };
 
             $scope.$watch('searchElement', function(newValue, oldValue, scope) {
                 if(newValue !== oldValue){
-                    $scope.cleanAddService();
                     //console.debug("watch: changing input" );
                     // console.info($scope.componentAutocomplete);
                     angular.element($scope.componentAutocomplete).find(".autocomplete-list").removeClass("hideElement");
@@ -47,9 +35,8 @@ angular.module('autocompleteComponent',[])
             });
 
             angular.element('body').click(function() {
-             angular.element($scope.componentAutocomplete).find(".autocomplete-list").addClass("hideElement");
-             $scope.cleanAddService();
-         });
+                angular.element($scope.componentAutocomplete).find(".autocomplete-list").addClass("hideElement");
+            });
 
             // $("#searchElement").keyup(function(e) 
             $scope.navigate =function(e){

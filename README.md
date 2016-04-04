@@ -12,36 +12,34 @@ A simple AngularJS module that allows you to create fast and very simple autocom
 
 Clone the repository
 
-```
+```sh
 $ git clone https://github.com/Alberto-/angular-autocomplete.git
 ```
-##### Include files in your app
+#### Include files in your app
 
 Include both `angular_autocomplete.js` and `angular_autocomplete.css` files.
 
-then inject the "autocompleteComponent" in your app
-
+Then inject the **autocompleteComponent** module in your app.
 
 ```
 var myApp = angular.module('autocompleteExample',['autocompleteComponent']);
 ```
+Now you can use the directive `<autocomplete>`
 
-The autocomplete accepts to special attributes :
-"autocompletelist" and "callback".
+### How to use
 
-autocompletelist must contain a JSON array with your own elements list. Every JSON object must have "id" and "value" properties, like: {"id": "itemID", "value" : "item description ..."}
+The autocomplete directive accepts two special attributes,
+`autocompletelist` and `callback`:
+- **autocompletelist** must contain a JSON array with your own elements list. Every JSON object must have an "id" and a "value" properties, like: {"id": "itemID", "value" : "item description"}
 
-callback will contain the function you want call when you select an element in the list.
-
-
-so here an example:
-
+- **callback** will contain the function you want call when you select an element in the list.
 
 
+so here an example of your JS file:
 ```
 myApp.controller("exampleController",["$scope" ,function($scope){
 
-	$scope.myfunction = function(param){
+	$scope.mycallback = function(param){
 		alert("Your element: "+ JSON.stringify(param));
     }
 
@@ -64,29 +62,27 @@ myApp.controller("exampleController",["$scope" ,function($scope){
 
 ```
 
+here the corresponding HTML code:
 
+```
+<autocomplete autocompletelist='UScountries' callback="mycallback(param)"></autocomplete>
+```
 
-you can find an example in the indext.html file.
-
-
+you can find the real example within the indext.html file.
 
 
 ### Run
 
 To run it locally you can use http-server
 
-
-so 
-
-```
+```sh
 nmp install -g http-server
-
 ```
 
 and then, from the project root 
 
-```
-http -server -a 0.0.0.0 -p 8000
+```sh
+http-server -a 0.0.0.0 -p 8000
 ```
 
 
@@ -95,7 +91,9 @@ your demo will run under
 http://localhost:8000/indext.html
 
 
-##ONLINE DEMO
+
+
+## ONLINE DEMO
 
 Coming soon
 
