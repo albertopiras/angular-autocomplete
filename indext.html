@@ -1,34 +1,30 @@
 <!DOCTYPE html>
 <html lang="en" >
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Angular autocomplete</title>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Angular autocomplete</title>
 
-		<!-- JS inclusions -->
-		<script type="text/javascript" src="assets/lib/jquery-1.12.1.min.js"></script>
-		<script type="text/javascript" src="assets/lib/angular.min.js"></script>
-		<script type="text/javascript" src="assets/lib/underscore.js"></script>
-		<script type="text/javascript" src="assets/js/angular_autocomplete.js"></script>
-		<script type="text/javascript" src="app.js"></script>
+	<!-- JS inclusions -->
+	<script type="text/javascript" src="assets/lib/jquery-1.12.1.min.js"></script>
+	<script type="text/javascript" src="assets/lib/angular.min.js"></script>
+	<script type="text/javascript" src="assets/lib/underscore.js"></script>
+	<script type="text/javascript" src="assets/js/angular_autocomplete.js"></script>
+	<script type="text/javascript" src="app.js"></script>
 
-		<!-- CSS -->
-		<link rel="stylesheet" type="text/css" href="assets/css/autocomplete.css">
-	</head>
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="assets/css/autocomplete.css">
+</head>
 
-	<body ng-app="autocomplete">
-		<h1>Angular Autocomplete</h1>
-		<div ng-controller="exampleController">
+<body ng-app="autocomplete">
+	<h1>Angular Autocomplete</h1>
+	<div ng-controller="exampleController">
 
-			<autocomplete services='[{"id":"lillo","value":"lillo"},
-			{"id":"lillo2","value":"lillo 2"},
-			{"id":"lillo3","value":"lillo 3"}]'></autocomplete>
+	<autocomplete services='UScountries' callback="test(param)"></autocomplete>
+	<autocomplete services='UScountries'callback="test(param)" ></autocomplete>
 
-			<autocomplete services='[{"id":"first","value":"primo elemento"},
-			{"id":"second","value":"secondo elemento"},
-			{"id":"third","value":"terzo elemento"}]'></autocomplete>
-
-		</div>
-	</body>
+	</div>
+</body>
 </html>
+

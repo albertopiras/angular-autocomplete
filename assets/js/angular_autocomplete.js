@@ -3,12 +3,13 @@ angular.module('autocompleteComponent',[])
     return{
         restrict : 'E',
         scope : {
-            services: '=',
+            services: "=",
+            callback: "&"
         },
-        link: function($scope, element){
+        link: function(scope, element,attr){
             // selects current 'directive Element to ensure a custom search scope'
-            $scope.componentAutocomplete = element[0];
-            console.log($scope.componentAutocomplete);
+            scope.componentAutocomplete = element[0];
+            console.log(scope.componentAutocomplete);
         },
         controller: function($scope,$rootScope,$timeout){
 
@@ -23,12 +24,14 @@ angular.module('autocompleteComponent',[])
             $scope.enableAddService = false;
             $scope.serviceSelected;
 
-            $scope.addSelectItem = function(serviceId){
-                $scope.searchService =  $scope.getServiceName(serviceId);
+            $scope.addSelectItem = function(object){
+                $scope.searchService =  $scope.getServiceName(object.id);
                 $timeout(function(){
-                    $scope.serviceSelected=serviceId;
+                    $scope.serviceSelected=object.id;
                     angular.element($scope.componentAutocomplete).find(".autocomplete_select").addClass("hideElement");
                     $scope.enableAddService = true;
+                    $scope.callback({param: object});
+         
                 },100);
             };
 
@@ -42,9 +45,9 @@ angular.module('autocompleteComponent',[])
             });
 
             angular.element('body').click(function() {
-               angular.element($scope.componentAutocomplete).find(".autocomplete_select").addClass("hideElement");
-               $scope.cleanAddService();
-            });
+             angular.element($scope.componentAutocomplete).find(".autocomplete_select").addClass("hideElement");
+             $scope.cleanAddService();
+         });
 
             // $("#searchService").keyup(function(e) 
             $scope.navigate =function(e){
