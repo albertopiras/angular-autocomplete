@@ -70,7 +70,7 @@ Here the corresponding HTML code:
 
 This is a very simple autocomplete, in 3 or 4 steps you have a simple autocomplete working!
 
-![Alt text](http://localhost:8000/assets/img/Pozzetto.gif?raw=true "One two three four...TAAC  (Pozzetto - Le comiche)")
+![Alt text](https://github.com/Alberto-/angular-autocomplete/blob/master/assets/img/Pozzetto.gif?raw=true "One two three four...TAAC  (Pozzetto - Le comiche)")
 
 
 You can find the real example within the indext.html and example.js files.
