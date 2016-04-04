@@ -3,7 +3,7 @@ angular.module('autocompleteComponent',[])
     return{
         restrict : 'E',
         scope : {
-            services: "=",
+            autocompletelist: "=",
             callback: "&"
         },
         link: function(scope, element,attr){
@@ -18,16 +18,16 @@ angular.module('autocompleteComponent',[])
             /*Autocompleter start*/
             $scope.cleanAddService = function(){
                 $scope.enableAddService = false;
-                $scope.serviceSelected = "";
+                $scope.autocompletelistelected = "";
             };
 
             $scope.enableAddService = false;
-            $scope.serviceSelected;
+            $scope.autocompletelistelected;
 
             $scope.addSelectItem = function(object){
                 $scope.searchService =  $scope.getServiceName(object.id);
                 $timeout(function(){
-                    $scope.serviceSelected=object.id;
+                    $scope.autocompletelistelected=object.id;
                     angular.element($scope.componentAutocomplete).find(".autocomplete-list").addClass("hideElement");
                     $scope.enableAddService = true;
 
@@ -93,11 +93,11 @@ angular.module('autocompleteComponent',[])
             /*Autocompleter End*/
 
             $scope.getServiceName = function(serviceId){
-                var service = _.find($scope.services, function(service){ return service.id === serviceId;});
+                var service = _.find($scope.autocompletelist, function(service){ return service.id === serviceId;});
                 var response = (service !== undefined)? service.id: serviceId;
                 return response;
             };
         },  
-        template : '<input type="text" ng-keyup="navigate($event)" id="searchService" name="searchService" ng-model="searchService" class="autocomplete-input" maxlength="50"/><div class="autocomplete-list hideElement"><div class="autocomplete-item display_box" ng-repeat="item in services | filter : searchService" ng-click="addSelectItem(item)">{{item.value}}-{{item.id}}</div></div>'
+        template : '<input type="text" ng-keyup="navigate($event)" id="searchService" name="searchService" ng-model="searchService" class="autocomplete-input" maxlength="50"/><div class="autocomplete-list hideElement"><div class="autocomplete-item display_box" ng-repeat="item in autocompletelist | filter : searchService" ng-click="addSelectItem(item)">{{item.value}}-{{item.id}}</div></div>'
     }
 });

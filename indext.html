@@ -19,11 +19,11 @@
 	<!-- element app -->
 	<script type="text/javascript" src="example.js"></script>
 
-<style type="text/css">
-	.element{
-		margin: 1rem 0;
-	}
-</style>
+	<style type="text/css">
+		.element{
+			margin: 1rem 0;
+		}
+	</style>
 </head>
 
 <body ng-app="autocompleteExample">
@@ -32,11 +32,11 @@
 		<div class="width-33">
 			<div class="element">
 				<label for="autocomplete1">Autocomplete 1</label>
-				<autocomplete id="autocomplete1" services='UScountries' callback="myfunction(param)"></autocomplete>
+				<autocomplete id="autocomplete1" autocompletelist='UScountries' callback="myfunction(param)"></autocomplete>
 			</div>
 			<div class="element">
 				<label for="autocomplete2">Autocomplete 2</label>
-				<autocomplete id="autocomplete2" services='UScountries'callback="myfunction(param)" ></autocomplete>
+				<autocomplete id="autocomplete2" autocompletelist='UScountries'callback="myfunction(param)" ></autocomplete>
 			</div>
 		</div>
 	</div>
