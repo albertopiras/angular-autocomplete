@@ -68,10 +68,14 @@ Here the corresponding HTML code:
 <autocomplete autocompletelist='UScountries' callback="mycallback(param)"></autocomplete>
 ```
 
-You can find the real example within the indext.html file.
+This is a very simple autocomplete, in 3 or 4 steps you have a simple autocomplete working!
+
+![Alt text](http://localhost:8000/assets/img/Pozzetto.gif?raw=true "One two three four...TAAC  (Pozzetto - Le comiche)")
 
 
-### Run
+You can find the real example within the indext.html and example.js files.
+
+### Run the demo
 
 To run it locally you can use http-server
 
@@ -105,4 +109,4 @@ Coming soon ..
 
 MIT 
 
-[view demo]: <http://ADDRESS/autocomplete/>
+[view demo]: <http://angularautocomplete-enta.rhcloud.com/app/>
