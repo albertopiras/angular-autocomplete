@@ -75,7 +75,7 @@ It's so easy as Renato Pozzetto does the dishes (in "Le Comiche" film).
 ![Alt text](https://github.com/Alberto-/angular-autocomplete/blob/master/assets/img/Pozzetto.gif?raw=true "One two three four...TAAC  (Pozzetto - Le comiche)")
 
 
-You can find the real example within the indext.html and example.js files.
+You can find the real example within the index.html and example.js files.
 
 ### Run the demo
 
@@ -94,7 +94,7 @@ http-server -a 0.0.0.0 -p 8000
 
 your demo will run under
 
-http://localhost:8000/indext.html
+http://localhost:8000/index.html
 
 
 
