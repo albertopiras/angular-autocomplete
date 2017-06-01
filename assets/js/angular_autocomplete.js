@@ -1,17 +1,17 @@
-angular.module('autocompleteComponent',[])
-.directive('autocomplete',function(){
-    return{
+angular.module('autocompleteComponent', [])
+.directive('autocomplete', function() {
+    return {
         restrict : 'E',
         scope : {
             autocompletelist: "=",
             callback: "&"
         },
-        link: function(scope, element,attr){
+        link: function(scope, element, attr){
             // selects current 'directive Element to ensure a custom search scope'
             scope.componentAutocomplete = element[0];
             console.log(scope.componentAutocomplete);
         },
-        controller: function($scope,$rootScope,$timeout){
+        controller: function($scope, $rootScope, $timeout){
 
             $scope.displayBoxIndex = -1;
 
@@ -25,7 +25,7 @@ angular.module('autocompleteComponent',[])
             };
 
             $scope.$watch('searchElement', function(newValue, oldValue, scope) {
-                if(newValue !== oldValue){
+                if (newValue !== oldValue) {
                     //console.debug("watch: changing input" );
                     angular.element($scope.componentAutocomplete).find(".autocomplete-list").removeClass("hideElement");
                 }
@@ -36,23 +36,20 @@ angular.module('autocompleteComponent',[])
             });
 
             // $("#searchElement").keyup(function(e) 
-            $scope.navigate =function(e){
+            $scope.navigate = function(e) {
                 //console.debug("navigating..");
-                if (e.keyCode == 40) 
-                {  
-                    Navigate(1);
+                if (e.keyCode == 40) {  
+                    navigate(1);
                 }
-                if(e.keyCode==38)
-                {
-                    Navigate(-1);
+                if(e.keyCode==38) {
+                    navigate(-1);
                 }
-                if(e.keyCode==13)
-                {
+                if(e.keyCode==13) {
                     selectListItem(e);
                 }
             };
 
-            var Navigate = function(diff) {
+            function navigate(diff) {
                 $scope.displayBoxIndex += diff;
                 var oBoxCollection = angular.element($scope.componentAutocomplete).find(".display_box");
                 if ($scope.displayBoxIndex >= oBoxCollection.length)
@@ -63,17 +60,17 @@ angular.module('autocompleteComponent',[])
                 oBoxCollection.removeClass(cssClass).eq($scope.displayBoxIndex).addClass(cssClass);
             };
 
-            var selectListItem = function() {
+            function selectListItem() {
                 /*timeout used to allow Angular digest cycle close itself */
-                setTimeout(function(){
+                setTimeout(function() {
                     //console.debug("selecting item");
                     var oBoxCollection = angular.element($scope.componentAutocomplete).find(".display_box");
                     var cssClass = "display_box_hover";
                     var temp = oBoxCollection.removeClass(cssClass).eq($scope.displayBoxIndex).click();
-                },150); 
+                }, 150); 
             };
 
-            $scope.getServiceName = function(objId){
+            $scope.getServiceName = function(objId) {
                 var obj = _.find($scope.autocompletelist, function(obj){ return obj.id === objId;});
                 var response = (obj !== undefined)? obj.value: objId;
                 return response;
